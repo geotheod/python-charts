@@ -20,23 +20,22 @@ for i in df.columns:
     
     print('i',i)
     print(df[i])
-    y = df[i]
-    if any(isinstance(x, str) for x in y):
+    stats = df[i]
+    if any(isinstance(x, str) for x in stats):
         print("the list contains a string")
-        y = y.astype(str)    
-    
-    y = y.value_counts()
-
-    y = y.sort_index()
-    print('y\n',y)
-
-    stats = y
+        answer = answer + 1
+        #stats = stats.astype(str)    
+        continue
     print('stats\n',stats)
-    labels = y.index
+    labels = ['Τεχνική Υπηρεσία', 
+              'Γραφείο Πληροφορικής',
+              'Τμήμα Κοινωνικής Προστασίας\nΠαιδείας & Πολιτισμού',
+              'Τμήμα Συντήρησης Πρασίνου',
+              'Διεύθυνση Διοικητικών Υπηρεσιών']
     print('labels',labels)
     stats = stats.tolist()
     print(stats)
-    categories=labels.tolist()
+    categories=labels
     print(categories)
     N = len(categories)
      
@@ -73,7 +72,7 @@ for i in df.columns:
             va= "top"  
     
         else:
-            ha= 'right'
+            ha= 'left'
             va= "bottom"
     
         label.set_verticalalignment(va)
@@ -85,7 +84,7 @@ for i in df.columns:
      
     # Draw ylabels
     ax.set_rlabel_position(0)
-    plt.yticks([1,2,3,4,5], ["1","2","3","4","5"], color="grey", size=7)
+    plt.yticks([1,2,3,4,5], color="grey", size=7)
     plt.ylim(0,5)
     #i = i.join('\n')
     

@@ -21,7 +21,7 @@ print(df.columns[5])
 answer = 1
 for i in df.columns:
     print('i',i)
-    print(df[i])    
+    #print(df[i])    
     if any(isinstance(x, str) for x in df[i]):
         """
         label_encoder = LabelEncoder()
@@ -56,6 +56,12 @@ for i in df.columns:
     btitle = "\n".join(wrap(i,60))
     btitle = btitle + "\n"                   
     plt.title(btitle, fontsize=14)
+    print('Mean: ', df[i].mean())
+    print('Std: ',df[i].std())
+    print('Min: ',df[i].min())
+    print('Max: ',df[i].max())
+    
+    print('Quantile:\n',df[i].quantile([0.25,0.5,0.75]))    
     
     # Creating plot 
     plt.boxplot(df[i], patch_artist=True, 
